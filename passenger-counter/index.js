@@ -16,6 +16,11 @@ function increment() {
 function save() {
     saved += count.toString() + " - ";
     savedEL.textContent = saved;
+    reset();
+}
+
+// Reset the count to 0
+function reset() {
     count = 0;
     countEL.innerText = count;
 }
