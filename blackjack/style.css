@@ -27,3 +27,8 @@ button {
     padding: 5px;
     margin: 2.5px;
 }
+
+#reset-btn {
+    background: red;
+    color: white;
+}

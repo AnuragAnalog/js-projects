@@ -1,18 +1,25 @@
 //@ts-check
 
-let drawCard = 0;
-let firstCard = 10;
-let secondCard = 4;
-let cards = [firstCard, secondCard];
+let cards = [];
 let hasblackJack = false;
-let isAlive = true;
+let isAlive = false;
 let message = "";
-let sum = firstCard + secondCard;
+let sum = 0;
 let messageEL = document.getElementById("message-el");
 let sumEL = document.querySelector("#sum-el");
 let cardsEL = document.querySelector("#cards-el");
 
 function startGame() {
+    if (isAlive) {
+        return;
+    }
+
+    firstCard = getRandomCard();
+    secondCard = getRandomCard();
+    cards = [firstCard, secondCard];
+    sum = firstCard + secondCard;
+    isAlive = true;
+
     renderGame();
 }
 
@@ -37,10 +44,30 @@ function renderGame() {
 }
 
 function newCard() {
-    drawCard = 7;
+    if (!isAlive || hasblackJack) {
+        return;
+    }
+
+    let drawCard = getRandomCard();
     cards.push(drawCard);
     sum += drawCard;
+
     renderGame();
+}
+
+function resetGame() {
+    cards = [getRandomCard(), getRandomCard()];
+    sum = cards[0] + cards[1];
+    isAlive = false;
+    hasblackJack = false;
+
+    messageEL.textContent = "Want to play a round?";
+    cardsEL.textContent = "Cards: ";
+    sumEL.textContent = "Sum: ";
+}
+
+function getRandomCard() {
+    return Math.floor(Math.random() * 13) % 9 + 2;
 }
 
 console.log(message);
