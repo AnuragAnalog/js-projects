@@ -17,7 +17,7 @@ body {
     font-style: italic;
 }
 
-#start-btn {
+button {
     color: #016f32;
     font-weight: bold;
     width: 150px;
@@ -25,4 +25,5 @@ body {
     border: none;
     border-radius: 2.5px;
     padding: 5px;
-} 
+    margin: 2.5px;
+}
