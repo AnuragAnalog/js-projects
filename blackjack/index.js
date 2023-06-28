@@ -5,9 +5,15 @@ let hasblackJack = false;
 let isAlive = false;
 let message = "";
 let sum = 0;
+let playerInfo = {
+    name: "Anurag",
+    chips: 150
+}
+
 let messageEL = document.getElementById("message-el");
 let sumEL = document.querySelector("#sum-el");
 let cardsEL = document.querySelector("#cards-el");
+let playerEL = document.querySelector("#player-el");
 
 function startGame() {
     if (isAlive) {
@@ -19,6 +25,7 @@ function startGame() {
     cards = [firstCard, secondCard];
     sum = firstCard + secondCard;
     isAlive = true;
+    playerEL.textContent = playerInfo.name + ": $" + playerInfo.chips;
 
     renderGame();
 }
