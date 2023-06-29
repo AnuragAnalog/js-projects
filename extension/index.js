@@ -1,8 +1,25 @@
 //@ts-check
 
-let inputEL = document.querySelector("#input-el");
-let showEL = document.querySelector("#show-el");
+let myLeads = [];
+const inputEL = document.querySelector("#input-el");
+const ulEL = document.querySelector("#ul-el");
 
-function logOut() {
-    showEL.textContent = inputEL.value;
+const buttonEL = document.querySelector("#button-el");
+
+buttonEL.addEventListener("click", function() {
+    myLeads.push(inputEL.value);
+    inputEL.value = "";
+    renderLeads();
+});
+
+function renderLeads() {
+    ulEL.innerHTML = "";
+    myLeads.forEach(function(lead) {
+        ulEL.innerHTML += "<li>" + lead + "</li>";
+
+        // const li = document.createElement("li");
+        // li.textContent = lead;
+        // ulEL.append(li);
+        // Another way to do it.
+    });
 }
