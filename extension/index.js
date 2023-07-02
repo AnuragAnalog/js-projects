@@ -1,25 +1,54 @@
 //@ts-check
 
 // chrome://extensions/
-let myLeads = [];
+let storageLeads = [];
 const inputEL = document.querySelector("#input-el");
 const ulEL = document.querySelector("#ul-el");
-
 const buttonEL = document.querySelector("#button-el");
+const deleteButtonEL = document.querySelector("#delete-el");
+const saveEL = document.querySelector("#tab-el");
 
-localStorage.setItem("myleads", "www.awesomelead.com");
-console.log(localStorage.getItem("myleads"));
-localStorage.clear();
+const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
+
+if (leadsFromLocalStorage) {
+    storageLeads = leadsFromLocalStorage;
+    renderLeads(storageLeads);
+}
+
+tabs = [
+    {
+        url: "https://www.linkedin.com/in/abhishek-kumar-4a1b3a1b7/",
+    }
+]
 
 buttonEL.addEventListener("click", function() {
-    myLeads.push(inputEL.value);
+    storageLeads.push(inputEL.value);
     inputEL.value = "";
-    renderLeads();
+
+    localStorage.setItem("myLeads", JSON.stringify(storageLeads));
+    storageLeads = JSON.parse(localStorage.getItem("myLeads"));
+
+    if (storageLeads) {
+        renderLeads(storageLeads);
+    }
 });
 
-function renderLeads() {
+deleteButtonEL.addEventListener("dblclick", function() {
+    storageLeads = [];
+    localStorage.clear();
     ulEL.innerHTML = "";
-    myLeads.forEach(function(lead) {
+});
+
+saveEL.addEventListener("click", function() {
+    console.log("Save button clicked");
+    storageLeads.push(tabs[0].url);
+    localStorage.setItem("myLeads", JSON.stringify(storageLeads));
+    renderLeads(storageLeads);
+});
+
+function renderLeads(storageLeads) {
+    ulEL.innerHTML = "";
+    storageLeads.forEach(function(lead) {
         ulEL.innerHTML += `<li> 
                                 <a href=${lead} target="_blank">
                                     ${lead} 

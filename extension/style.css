@@ -15,12 +15,17 @@ input {
 
 button {
     color: white;
-    background-color: #5f9341;
-    border: none;
+    background: #5f9341;
+    border: 1px solid #5f9341;
     border-radius: 2.5px;
     margin: 10px;
     padding: 10px 20px; /* top/bottom left/right */
     font-weight: bold;
+}
+
+#delete-el {
+    color: #5f9341;
+    background: white;
 }
 
 ul {
