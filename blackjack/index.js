@@ -20,6 +20,11 @@ function startGame() {
         return;
     }
 
+    if (playerInfo.chips === 0) {
+        alert("You don't have enough chips to play!");
+        return;
+    }
+
     firstCard = getRandomCard();
     secondCard = getRandomCard();
     cards = [firstCard, secondCard];
@@ -36,10 +41,14 @@ function renderGame() {
     } else if (sum === 21) {
         message = "Congrats! You've got Blackjack! 🥳";
         hasblackJack = true;
+        playerInfo.chips += 50;
     } else {
         message = "You're out of the game! 😭";
         isAlive = false;
+        playerInfo.chips -= 50;
     }
+
+    playerEL.textContent = playerInfo.name + ": $" + playerInfo.chips;
 
     cardsEL.textContent = "Cards: ";
     cards.forEach((card) => {
@@ -48,14 +57,19 @@ function renderGame() {
 
     sumEL.textContent = "Sum: " + sum;
     messageEL.textContent = message;
+
+    if (hasblackJack) {
+        alert("You won 50 chips! HOORAYY!!!");
+    }
 }
 
 function newCard() {
+    let drawCard = getRandomCard();
+
     if (!isAlive || hasblackJack) {
         return;
     }
 
-    let drawCard = getRandomCard();
     cards.push(drawCard);
     sum += drawCard;
 
@@ -75,11 +89,4 @@ function resetGame() {
 
 function getRandomCard() {
     return Math.floor(Math.random() * 13) % 9 + 2;
-}
-
-console.log(message);
-if (hasblackJack) {
-    console.log("The cash is your's!");
-} else {
-    console.log("Do you want to play again?"); 
 }
