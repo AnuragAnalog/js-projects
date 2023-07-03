@@ -1,10 +1,10 @@
 //@ts-check
 
-let cards = [];
-let hasblackJack = false;
-let isAlive = false;
-let message = "";
 let sum = 0;
+let cards = [];
+let message = "";
+let isAlive = false;
+let hasblackJack = false;
 let playerInfo = {
     name: "Anurag",
     chips: 150
@@ -22,6 +22,7 @@ function startGame() {
 
     if (playerInfo.chips === 0) {
         alert("You don't have enough chips to play!");
+
         return;
     }
 
@@ -32,20 +33,20 @@ function startGame() {
     isAlive = true;
     playerEL.textContent = playerInfo.name + ": $" + playerInfo.chips;
 
-    renderGame();
+    renderGame(sum);
 }
 
-function renderGame() {
+function renderGame(sum) {
     if (sum <= 20) {
         message = "Do you want to draw a new card? 🙂";
     } else if (sum === 21) {
-        message = "Congrats! You've got Blackjack! 🥳";
         hasblackJack = true;
         playerInfo.chips += 50;
+        message = "Congrats! You've got Blackjack! 🥳";
     } else {
-        message = "You're out of the game! 😭";
         isAlive = false;
         playerInfo.chips -= 50;
+        message = "You're out of the game! 😭";
     }
 
     playerEL.textContent = playerInfo.name + ": $" + playerInfo.chips;
@@ -73,7 +74,7 @@ function newCard() {
     cards.push(drawCard);
     sum += drawCard;
 
-    renderGame();
+    renderGame(sum);
 }
 
 function resetGame() {
