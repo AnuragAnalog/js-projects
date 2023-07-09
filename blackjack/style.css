@@ -1,4 +1,4 @@
-h1 {
+h1, h2 {
     color: goldenrod;
     text-align: center;
 }
@@ -11,6 +11,21 @@ body {
     background-image: url("table.png");
     background-size: cover;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#user-input {
+    margin: auto;
+    width: fit-content;
+    border: 2.5px solid goldenrod;
+    border-radius: 3.5px;
+    padding: 15px;
+}
+
+#player-name, #player-chips {
+    margin: 5px;
+    border: black;
+    border-radius: 3.5px;
+    font-weight: bold;
 }
 
 #message-el {
@@ -29,6 +44,6 @@ button {
 }
 
 #reset-btn {
-    background: red;
+    background: rgb(143, 46, 46);
     color: white;
 }

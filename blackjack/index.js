@@ -14,6 +14,11 @@ let messageEL = document.getElementById("message-el");
 let sumEL = document.querySelector("#sum-el");
 let cardsEL = document.querySelector("#cards-el");
 let playerEL = document.querySelector("#player-el");
+let playerNameEL = document.querySelector("#player-name");
+let playerChipsEL = document.querySelector("#player-chips");
+
+playerInfo.name = playerNameEL.value;
+playerInfo.chips = playerChipsEL.value;
 
 function startGame() {
     if (isAlive) {
@@ -86,6 +91,18 @@ function resetGame() {
     messageEL.textContent = "Want to play a round?";
     cardsEL.textContent = "Cards: ";
     sumEL.textContent = "Sum: ";
+}
+
+function validateInfo() {
+    if (playerNameEL.value === "") {
+        alert("Please enter your name!");
+        return;
+    }
+
+    if (playerChipsEL.value === "") {
+        alert("Please enter the number of chips you have!");
+        return;
+    }
 }
 
 function getRandomCard() {
