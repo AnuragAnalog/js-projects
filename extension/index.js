@@ -15,12 +15,6 @@ if (leadsFromLocalStorage) {
     renderLeads(storageLeads);
 }
 
-tabs = [
-    {
-        url: "https://www.linkedin.com/in/abhishek-kumar-4a1b3a1b7/",
-    }
-]
-
 buttonEL.addEventListener("click", function() {
     storageLeads.push(inputEL.value);
     inputEL.value = "";
@@ -40,10 +34,11 @@ deleteButtonEL.addEventListener("dblclick", function() {
 });
 
 saveEL.addEventListener("click", function() {
-    console.log("Save button clicked");
-    storageLeads.push(tabs[0].url);
-    localStorage.setItem("myLeads", JSON.stringify(storageLeads));
-    renderLeads(storageLeads);
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        storageLeads.push(tabs[0].url);
+        localStorage.setItem("myLeads", JSON.stringify(storageLeads));
+        renderLeads(storageLeads);
+    });
 });
 
 function renderLeads(storageLeads) {
