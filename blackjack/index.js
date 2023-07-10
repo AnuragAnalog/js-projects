@@ -6,7 +6,7 @@ let message = "";
 let isAlive = false;
 let hasblackJack = false;
 let playerInfo = {
-    name: "Anurag",
+    name: "",
     chips: 0
 }
 
@@ -96,9 +96,6 @@ function resetGame() {
 }
 
 function validateInfo() {
-    console.log(playerNameEL.value, playerChipsEL.value);
-    console.log(playerInfo.name, playerInfo.chips);
-
     if (playerNameEL.value === "") {
         alert("Please enter your name!");
         return;
@@ -119,5 +116,12 @@ function validateInfo() {
 }
 
 function getRandomCard() {
-    return Math.floor(Math.random() * 13) % 10 + 2;
+    let randomNumber = Math.floor(Math.random() * 13) % 10 + 1;
+
+    if (randomNumber === 1) {
+        const isAce = confirm("You got an Ace! Do you want it to be 1\nIf cancel, it will be 11");
+        randomNumber = isAce ? 1 : 11;
+    }
+
+    return randomNumber;
 }
