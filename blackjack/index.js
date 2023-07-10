@@ -7,7 +7,7 @@ let isAlive = false;
 let hasblackJack = false;
 let playerInfo = {
     name: "Anurag",
-    chips: 150
+    chips: 0
 }
 
 let messageEL = document.getElementById("message-el");
@@ -16,9 +16,6 @@ let cardsEL = document.querySelector("#cards-el");
 let playerEL = document.querySelector("#player-el");
 let playerNameEL = document.querySelector("#player-name");
 let playerChipsEL = document.querySelector("#player-chips");
-
-playerInfo.name = playerNameEL.value;
-playerInfo.chips = playerChipsEL.value;
 
 function startGame() {
     if (isAlive) {
@@ -46,8 +43,13 @@ function renderGame(sum) {
         message = "Do you want to draw a new card? 🙂";
     } else if (sum === 21) {
         hasblackJack = true;
-        playerInfo.chips += 50;
-        message = "Congrats! You've got Blackjack! 🥳";
+        if (cards.length === 2) {
+            playerInfo.chips += 100;
+            message = "Congrats! You've got Blackjack! 🥳";
+        } else if (cards.length === 3) {
+            playerInfo.chips += 50;
+            message = "Congrats! You've got Won! 🥳";
+        }
     } else {
         isAlive = false;
         playerInfo.chips -= 50;
@@ -94,6 +96,9 @@ function resetGame() {
 }
 
 function validateInfo() {
+    console.log(playerNameEL.value, playerChipsEL.value);
+    console.log(playerInfo.name, playerInfo.chips);
+
     if (playerNameEL.value === "") {
         alert("Please enter your name!");
         return;
@@ -103,8 +108,16 @@ function validateInfo() {
         alert("Please enter the number of chips you have!");
         return;
     }
+
+    playerInfo.name = playerNameEL.value;
+    playerInfo.chips = Number.parseInt(playerChipsEL.value, 10);
+
+    playerEL.textContent = playerInfo.name + ": $" + playerInfo.chips;
+
+    playerNameEL.value = "";
+    playerChipsEL.value = "";
 }
 
 function getRandomCard() {
-    return Math.floor(Math.random() * 13) % 9 + 2;
+    return Math.floor(Math.random() * 13) % 10 + 2;
 }
