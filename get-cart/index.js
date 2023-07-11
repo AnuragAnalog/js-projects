@@ -26,14 +26,13 @@ btnEL.addEventListener("click", function () {
 });
 
 onValue(itemsInDB, function (dbState) {
-    let items = Object.values(dbState.val());
+    let i, items = Object.values(dbState.val());
     console.log(items);
 
     clearPara(pEL);
 
-    for (let item in items) {
-        console.log(item);
-        addToPara(pEL, item);
+    for (i = 0; i < items.length; i++) {
+        addToPara(pEL, items[i]);
     }
 });
 
