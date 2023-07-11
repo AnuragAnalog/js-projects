@@ -13,7 +13,7 @@ const itemsInDB = ref(db, "items");
 
 let inputEL = document.querySelector("#input-field");
 let btnEL = document.querySelector("#add-btn");
-let pEL = document.querySelector("#items");
+let ulEL = document.querySelector("#items");
 
 btnEL.addEventListener("click", function () {
     let item = inputEL.value;
@@ -28,10 +28,10 @@ btnEL.addEventListener("click", function () {
 onValue(itemsInDB, function (dbState) {
     let i, items = Object.values(dbState.val());
 
-    clearPara(pEL);
+    clearPara(ulEL);
 
     for (i = 0; i < items.length; i++) {
-        addToPara(pEL, items[i]);
+        addToPara(ulEL, items[i]);
     }
 });
 
@@ -39,10 +39,10 @@ function clearInput(inputElement) {
     inputElement.value = "";
 }
 
-function addToPara(PElement, item) {
-    PElement.textContent += item + " ";
+function addToPara(ulElement, item) {
+    ulElement.textContent += `<ul> ${item} </ul>`
 }
 
-function clearPara(PElement) {
-    PElement.textContent = "";
+function clearPara(ulElement) {
+    ulElement.textContent = "";
 }
