@@ -1,7 +1,7 @@
 //@ts-check
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 const appSettings = {
     databaseURL: "https://get-cart-default-rtdb.firebaseio.com/"
@@ -19,6 +19,27 @@ btnEL.addEventListener("click", function () {
     let item = inputEL.value;
 
     push(itemsInDB, item);
-    pEL.textContent += item + " ";
-    inputEL.value = "";
+    clearPara(pEL);
+    addToPara(pEL, item);
+    clearInput(inputEL);
 });
+
+onValue(itemsInDB, function (dbState) {
+    let item;
+
+    for (item in Object.values(dbState.val())) {
+        addToPara(pEL, item);
+    }
+});
+
+function clearInput(inputElement) {
+    inputElement.value = "";
+}
+
+function addToPara(PElement, item) {
+    PElement.textContent += item + " ";
+}
+
+function clearPara(PElement) {
+    PElement.textContent = "";
+}
