@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #EEF0F4;
+    color: #432000;
 }
 
 .main-container {
@@ -27,7 +28,13 @@ ul li {
     flex-grow: 1;
     font-size: 20px;
     text-align: center;
+    user-select: none;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+li:hover {
+    background-color: #FFECC7;
+    cursor: pointer;
 }
 
 img {
@@ -56,4 +63,9 @@ button {
     color: #FDFDFD;
     background-color: #AC485A;
     font-family: 'Rubik', sans-serif;
+}
+
+button:hover {
+    background-color: #432000;
+    cursor: pointer;
 }

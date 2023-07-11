@@ -26,12 +26,18 @@ btnEL.addEventListener("click", function () {
 });
 
 onValue(itemsInDB, function (dbState) {
-    let i, items = Object.entries(dbState.val());
+    let i;
 
-    clearPara(ulEL);
+    if (dbState.exists()) {
+        let items = Object.entries(dbState.val());
 
-    for (i = 0; i < items.length; i++) {
-        addToPara(ulEL, items[i]);
+        clearPara(ulEL);
+    
+        for (i = 0; i < items.length; i++) {
+            addToPara(ulEL, items[i]);
+        }
+    } else {
+        ulEL.textContent = "No items in cart....";
     }
 });
 
@@ -44,7 +50,7 @@ function addToPara(ulElement, itemPair) {
     newEL.textContent = itemPair[1];
     ulElement.append(newEL);
 
-    newEL.addEventListener("click", function () {
+    newEL.addEventListener("dbclick", function () {
         let fullPath = ref(db, `items/${itemPair[0]}`);
 
         remove(fullPath);
