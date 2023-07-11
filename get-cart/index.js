@@ -19,15 +19,15 @@ btnEL.addEventListener("click", function () {
     let item = inputEL.value;
 
     push(itemsInDB, item);
-    clearPara(pEL);
-    addToPara(pEL, item);
     clearInput(inputEL);
 });
 
 onValue(itemsInDB, function (dbState) {
-    let item;
+    let items = Object.values(dbState.val());
 
-    for (item in Object.values(dbState.val())) {
+    clearPara(pEL);
+
+    for (let item in items) {
         addToPara(pEL, item);
     }
 });
