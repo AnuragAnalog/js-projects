@@ -44,10 +44,10 @@ function addToPara(ulElement, itemPair) {
     newEL.textContent = itemPair[1];
     ulElement.append(newEL);
 
-    newEL.addEventListener("dbclick", function () {
-        let fullPath = ref(db, "items/" + itemPair[0]);
+    newEL.addEventListener("click", function () {
+        let fullPath = ref(db, `items/${itemPair[0]}`);
 
-        remove(fullPath)
+        remove(fullPath);
     });
 }
 
