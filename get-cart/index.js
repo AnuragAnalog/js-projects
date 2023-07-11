@@ -18,7 +18,10 @@ let pEL = document.querySelector("#items");
 btnEL.addEventListener("click", function () {
     let item = inputEL.value;
 
-    push(itemsInDB, item);
+    if (item !== "") {
+        push(itemsInDB, item);
+    }
+
     clearInput(inputEL);
 });
 
@@ -29,6 +32,7 @@ onValue(itemsInDB, function (dbState) {
     clearPara(pEL);
 
     for (let item in items) {
+        console.log(item);
         addToPara(pEL, item);
     }
 });
