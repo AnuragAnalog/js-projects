@@ -27,7 +27,6 @@ btnEL.addEventListener("click", function () {
 
 onValue(itemsInDB, function (dbState) {
     let i, items = Object.values(dbState.val());
-    console.log(items);
 
     clearPara(pEL);
 

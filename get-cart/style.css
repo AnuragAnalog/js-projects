@@ -12,6 +12,14 @@ html, body {
     margin: 30px auto;
 }
 
+.cart {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
 img {
     width: 150px;
     margin: 0 auto;
