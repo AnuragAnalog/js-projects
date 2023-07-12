@@ -52,6 +52,7 @@ function addToPara(ulElement, itemPair) {
 
     newEL.addEventListener("dbclick", function () {
         let fullPath = ref(db, `items/${itemPair[0]}`);
+        console.log(fullPath);
 
         remove(fullPath);
     });
