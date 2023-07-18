@@ -38,7 +38,7 @@ startBtnEL.addEventListener("click", function () {
             console.log(done);
 
             if (done === count) {
-                resetBtnEL = addButton(divEL);
+                // resetBtnEL = addButton(divEL);
                 display = false;
             }
         });
@@ -46,7 +46,7 @@ startBtnEL.addEventListener("click", function () {
 
     if (resetBtnEL !== null) {
         resetBtnEL.addEventListener("click", function () {
-            console.log("Reset button clicked");
+ 
             ulEL.innerHTML = "";
             done = 0;
         });
