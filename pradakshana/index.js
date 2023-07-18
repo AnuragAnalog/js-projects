@@ -1,6 +1,6 @@
 //@ts-check
 
-let resetBtnEL = null, display = false;
+let display = false;
 let inputEL = document.querySelector("#input-field");
 let startBtnEL = document.querySelector("#start-btn");
 let ulEL = document.querySelector("#list-ul");
@@ -38,17 +38,15 @@ startBtnEL.addEventListener("click", function () {
             console.log(done);
 
             if (done === count) {
-                // resetBtnEL = addButton(divEL);
+                resetBtnEL = addButton(divEL);
+                resetBtnEL.addEventListener("click", function () {
+                    ulEL.innerHTML = "";
+                    divEL.removeChild(resetBtnEL);
+                    done = 0;
+                });
+
                 display = false;
             }
-        });
-    }
-
-    if (resetBtnEL !== null) {
-        resetBtnEL.addEventListener("click", function () {
- 
-            ulEL.innerHTML = "";
-            done = 0;
         });
     }
 
