@@ -9,7 +9,7 @@ html, body {
 .main-container {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
+    max-width: 360px;
     margin: 30px auto;
 }
 
@@ -35,6 +35,11 @@ ul li {
 li:hover {
     background-color: #FFECC7;
     cursor: pointer;
+}
+
+.clicked {
+    background-color: #d82848;
+    color: #FDFDFD;
 }
 
 img {
