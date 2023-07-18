@@ -37,11 +37,6 @@ li:hover {
     cursor: pointer;
 }
 
-.clicked {
-    background-color: #d82848;
-    color: #FDFDFD;
-}
-
 img {
     width: 300px;
     margin: 0 auto;
