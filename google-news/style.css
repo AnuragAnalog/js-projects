@@ -57,3 +57,32 @@ button:hover {
     width: 420px;
     margin: 20px auto;
 }
+
+#news-container {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    margin: 20px auto;
+}
+
+#img-id, #inner {
+    height: 250px;
+}
+
+#img-id {
+    border-radius: 10px 0 0 10px;
+    width: 250px;
+}
+
+#news {
+    padding: 10px;
+}
+
+#inner {
+    margin: 5px;
+    width: 850px;
+    background-color: rgb(215, 208, 221);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+}
