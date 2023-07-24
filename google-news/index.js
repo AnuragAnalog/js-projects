@@ -18,7 +18,7 @@ buttonEL.addEventListener("click", function() {
             pEL.textContent = `There are a total of ${articles.length} articles on ${searchValue}`;
 
             for (let article in articles) {
-                newsBlock = createNewsBlock(article);
+                newsBlock = createNewsBlock(articles[article]);
                 divEL.append(newsBlock);
             }
     });
@@ -36,10 +36,17 @@ function createNewsBlock(article) {
     let br = document.createElement("br");
     let a = document.createElement("a");
 
+    console.log(article);
+    div.setAttribute("id", "news-block");
+
     img.src = article.image;
     img.alt = article.title;
+    img.setAttribute("id", "news-img");
+
     b.textContent = article.title;
     p.textContent = article.description;
+    p.setAttribute("id", "news-info");
+
     a.href = article.url;
     a.textContent = "Read More";
 
@@ -53,9 +60,3 @@ function createNewsBlock(article) {
 
     return div;
 }
-
-{/* <p id="news">
-<b> Headlines of the day </b> <br><br>
-Some Random for texting the working of my css element 
-<br> <a href="www.google.com"> Read More </a> 
-</p> */}

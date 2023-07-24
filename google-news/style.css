@@ -65,20 +65,20 @@ button:hover {
     margin: 20px auto;
 }
 
-#img-id, #inner {
+#news-img, #news-info {
     height: 250px;
 }
 
-#img-id {
+#news-img {
     border-radius: 10px 0 0 10px;
     width: 250px;
 }
 
-#news {
+#news-info {
     padding: 10px;
 }
 
-#inner {
+#news-block {
     margin: 5px;
     width: 850px;
     background-color: rgb(215, 208, 221);
