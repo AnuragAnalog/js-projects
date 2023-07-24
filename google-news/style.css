@@ -4,7 +4,7 @@ head, body {
 }
 
 h1 {
-    font-size: 1.5em;
+    font-size: 75px;
     font-weight: normal;
     margin: 0;
     text-align: center;
@@ -12,19 +12,32 @@ h1 {
 
 input, button {
     border-radius: 6px;
-    border-color: rgb(255, 87, 21);
     text-align: center;
     margin: 5px;
 }
 
 input {
+    /* color: rgb(78, 70, 70); */
+    border-color: rgb(255, 87, 21);
     font-size: 30px;
 }
 
+input:focus {
+    outline: none;
+}
+
 button {
+    border-style: none;
     background-color: rgb(255, 87, 21);
     color: white;
     font-size: 25px;
+}
+
+button:hover {
+    background-color: rgb(255, 128, 78);
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
 }
 
 #img-id {
