@@ -37,9 +37,14 @@ function createNewsBlock(article) {
     let a = document.createElement("a");
 
     div.setAttribute("id", "news-block");
+    console.log(article.image);
 
     img.src = article.image;
     img.alt = article.title;
+    img.onerror = function() {
+        this.onerror = null;
+        this.src = "./gnews-default.png";
+    }
     img.setAttribute("id", "news-img");
 
     b.textContent = article.title;
@@ -49,8 +54,6 @@ function createNewsBlock(article) {
     a.textContent = "Read More";
 
     p.append(b);
-    p.append(br);
-    p.append(br);
     p.append(br);
     p.append(article.description);
     p.append(br);
