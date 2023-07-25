@@ -59,6 +59,7 @@ function createNewsBlock(article) {
     p.append(article.description);
     p.append(emptyDiv);
     p.append(emptyDiv);
+    p.append("Read more at: ");
     p.append(a);
 
     div.append(img);
