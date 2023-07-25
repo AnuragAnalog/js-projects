@@ -30,13 +30,14 @@ function resetInput(inputElement) {
 
 function createNewsBlock(article) {
     let div = document.createElement("div");
+    let emptyDiv = document.createElement("div");
     let img = document.createElement("img");
     let b = document.createElement("b");
     let p = document.createElement("p");
-    let br = document.createElement("br");
     let a = document.createElement("a");
 
     div.setAttribute("id", "news-block");
+    emptyDiv.setAttribute("class", "space");
     console.log(article.image);
 
     img.src = article.image;
@@ -51,13 +52,15 @@ function createNewsBlock(article) {
     p.setAttribute("id", "news-info");
 
     a.href = article.url;
-    a.textContent = "Read More";
+    a.textContent = article.url;
 
     p.append(b);
-    p.append(br);
+    p.append(emptyDiv);
     p.append(article.description);
-    p.append(br);
+    p.append(emptyDiv);
+    p.append(emptyDiv);
     p.append(a);
+
     div.append(img);
     div.append(p);
 

@@ -86,3 +86,7 @@ button:hover {
     display: flex;
     flex-direction: row;
 }
+
+.space {
+    margin-top: 10px;
+}
