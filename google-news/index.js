@@ -36,7 +36,6 @@ function createNewsBlock(article) {
     let br = document.createElement("br");
     let a = document.createElement("a");
 
-    console.log(article);
     div.setAttribute("id", "news-block");
 
     img.src = article.image;
@@ -44,19 +43,20 @@ function createNewsBlock(article) {
     img.setAttribute("id", "news-img");
 
     b.textContent = article.title;
-    p.textContent = article.description;
     p.setAttribute("id", "news-info");
 
     a.href = article.url;
     a.textContent = "Read More";
 
+    p.append(b);
+    p.append(br);
+    p.append(br);
+    p.append(br);
+    p.append(article.description);
+    p.append(br);
+    p.append(a);
     div.append(img);
-    div.append(b);
-    div.append(br);
-    div.append(br);
     div.append(p);
-    div.append(br);
-    div.append(a);
 
     return div;
 }
